@@ -718,8 +718,9 @@ public class SpeedTestTask {
 
         final byte[] buffer = new byte[SpeedTestConst.READ_BUFFER_SIZE];
         int read;
+        InputStream inputStream;
 
-        while ((read = mSocket.getInputStream().read(buffer)) != -1) {
+        while ((inputStream = mSocket.getInputStream()) != null && (read = inputStream.read(buffer)) != -1) {
 
             mDownloadTemporaryPacketSize += read;
             mDlComputationTempPacketSize += read;
